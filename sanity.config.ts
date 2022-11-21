@@ -1,5 +1,5 @@
 /**
- * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
+ * This config is used to set up Sanity Studio that's mounted on the `/app/studio/[[...index]].tsx` route
  */
 
 import { visionTool } from '@sanity/vision'
@@ -11,7 +11,7 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import authorType from 'schemas/author'
-import postType from 'schemas/post'
+import postType from 'schemas/page'
 import settingsType from 'schemas/settings'
 
 const title =

@@ -16,14 +16,14 @@ import authorType from './author'
  */
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
+  name: 'page',
+  title: 'Pagina',
   icon: BookIcon,
   type: 'document',
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Titolo',
       type: 'string',
       validation: (Rule) => Rule.required(),
     },
@@ -39,18 +39,18 @@ export default defineType({
     },
     {
       name: 'content',
-      title: 'Content',
+      title: 'Contenuto',
       type: 'array',
       of: [{ type: 'block' }],
     },
     {
       name: 'excerpt',
-      title: 'Excerpt',
+      title: 'Estratto',
       type: 'text',
     },
     {
       name: 'coverImage',
-      title: 'Cover Image',
+      title: 'Immagine di copertina',
       type: 'image',
       options: {
         hotspot: true,
@@ -58,12 +58,12 @@ export default defineType({
     },
     {
       name: 'date',
-      title: 'Date',
+      title: 'Data',
       type: 'datetime',
     },
     {
       name: 'author',
-      title: 'Author',
+      title: 'Autore',
       type: 'reference',
       to: [{ type: authorType.name }],
     },

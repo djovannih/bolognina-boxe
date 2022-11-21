@@ -44,7 +44,7 @@ export interface Author {
   picture?: any
 }
 
-export interface Post {
+export interface Page {
   _id: string
   title?: string
   coverImage?: any

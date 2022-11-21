@@ -6,7 +6,7 @@
 
 import { DefaultDocumentNodeResolver } from 'sanity/desk'
 import authorType from 'schemas/author'
-import postType from 'schemas/post'
+import postType from 'schemas/page'
 
 import AuthorAvatarPreviewPane from './AuthorAvatarPreviewPane'
 import PostPreviewPane from './PostPreviewPane'
