@@ -46,9 +46,9 @@ The Studio connects to Sanity Content Lake, which gives you hosted content APIs 
 | ------------------------------------------- | -------------------------------------------------------- |
 | `sanity.config.ts`                          |  Config file for Sanity Studio                           |
 | `sanity.cli.ts`                             |  Config file for Sanity CLI                              |
-| `/pages/studio/[[...index]].tsx`            |  Where Sanity Studio is mounted                          |
-| `/pages/api/revalidate.ts`                  |  Serverless route for triggering ISR                     |
-| `/pages/api/preview.ts`                     |  Serverless route for triggering Preview mode            |
+| `/app/studio/[[...index]].tsx`              |  Where Sanity Studio is mounted                          |
+| `/app/api/revalidate.ts`                    |  Serverless route for triggering ISR                     |
+| `/app/api/preview.ts`                       |  Serverless route for triggering Preview mode            |
 | `/schemas`                                  |  Where Sanity Studio gets its content types from         |
 | `/plugins`                                  |  Where the advanced Sanity Studio customization is setup |
 | `/lib/sanity.api.ts`,`/lib/sanity.image.ts` | Configuration for the Sanity Content Lake client         |
@@ -118,7 +118,7 @@ You can remove it by deleting the `IntroTemplate` component in `/components/Inde
 
 ### How can I set up Incremental Static Revalidation?
 
-Go to the serverless function code in `/pages/api/revalidate.ts`. In the code comments, you'll find instructions for how to set up [ISR][vercel-isr].
+Go to the serverless function code in `/app/api/revalidate.ts`. In the code comments, you'll find instructions for how to set up [ISR][vercel-isr].
 
 ## Next steps
 

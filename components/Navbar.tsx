@@ -1,11 +1,12 @@
 'use client'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+const { Disclosure, Menu, Transition } = await import('@headlessui/react')
 import {
   Bars3Icon,
   ChevronDownIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import localFont from '@next/font/local'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -17,15 +18,106 @@ const soccerJerseyFont = localFont({
   src: '../public/fonts/Soccer Jersey.ttf',
 })
 
-const navigation = [
-  { name: 'Palestra', href: '#', current: false },
-  { name: 'Come iscriversi', href: '#', current: false },
-  { name: 'Chi siamo', href: '#', current: false },
-  { name: 'Contatti', href: '#', current: false },
+type MenuItem = {
+  href?: string
+  label: string
+  children?: MenuItem[]
+}
+const menuItems: MenuItem[] = [
+  { href: '/', label: 'Home' },
+  {
+    label: 'Corsi',
+    children: [
+      { href: '/boxe', label: 'Boxe' },
+      { href: '/functional-training', label: 'Functional training' },
+      { href: '/yoga', label: 'Yoga' },
+      { href: '/muay-thai', label: 'Muay thai' },
+    ],
+  },
+  { href: '/palestra', label: 'Palestra' },
+  { href: '/come-iscriversi', label: 'Come iscriversi' },
+  { href: '/chi-siamo', label: 'Chi siamo' },
+  { href: '/contatti', label: 'Contatti' },
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+function MobileMenu() {
+  const pathname = usePathname() ?? ''
+
+  return (
+    <Disclosure.Panel className="lg:hidden">
+      <div className="px-2 pt-2 pb-3 space-y-1">
+        {menuItems.map((menuItem) => (
+          <>
+            {menuItem.href && (
+              <Link
+                key={menuItem.label}
+                href={menuItem.href ?? '/'}
+                className={clsx(
+                  pathname === menuItem.href
+                    ? 'bg-gray-900 text-white'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'block px-3 py-2 rounded-md text-base font-medium'
+                )}
+                aria-current={pathname === menuItem.href ? 'page' : undefined}
+              >
+                {menuItem.label}
+              </Link>
+            )}
+            {menuItem.children && (
+              <Disclosure
+                key={menuItem.label}
+                defaultOpen={menuItem.children.some(
+                  (subItem) => subItem.href === pathname
+                )}
+              >
+                <>
+                  <Disclosure.Button
+                    className={clsx(
+                      pathname === '/boxe'
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'flex items-center justify-between px-3 py-2 rounded-md text-base font-medium w-full'
+                    )}
+                  >
+                    <span>{menuItem.label}</span>
+                    <ChevronDownIcon className="ui-open:rotate-90 ui-open:transform w-4 h-4 text-gray-300" />
+                  </Disclosure.Button>
+                  <Transition
+                    enter="transition duration-100 ease-out"
+                    enterFrom="transform scale-95 opacity-0"
+                    enterTo="transform scale-100 opacity-100"
+                    leave="transition duration-75 ease-out"
+                    leaveFrom="transform scale-100 opacity-100"
+                    leaveTo="transform scale-95 opacity-0"
+                  >
+                    <Disclosure.Panel className="pl-4">
+                      {menuItem.children.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          href={subItem.href!}
+                          className={clsx(
+                            pathname === subItem.href
+                              ? 'bg-gray-900 text-white'
+                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block px-3 py-2 rounded-md text-base font-medium'
+                          )}
+                          aria-current={
+                            pathname === subItem.href ? 'page' : undefined
+                          }
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </Disclosure.Panel>
+                  </Transition>
+                </>
+              </Disclosure>
+            )}
+          </>
+        ))}
+      </div>
+    </Disclosure.Panel>
+  )
 }
 
 export default function Navbar() {
@@ -47,26 +139,26 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex pr-3 h-9 gap-x-2 lg:pr-0">
+              <a href="/" className="flex pr-3 h-9 gap-x-2 lg:pr-0">
                 <Image
                   src={logo}
-                  alt="Picture of the author"
+                  alt="Bolognina boxe logo"
                   priority
                   className="w-auto h-full"
                 />
                 <span
-                  className={classNames(
+                  className={clsx(
                     soccerJerseyFont.className,
                     'italic text-3xl text-white tracking-wider'
                   )}
                 >
                   Bolognina Boxe
                 </span>
-              </div>
+              </a>
               <div className="absolute inset-y-0 right-0 items-center hidden pr-2 lg:flex gap-x-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Link
                   href="/"
-                  className={classNames(
+                  className={clsx(
                     pathname === '/'
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -78,7 +170,7 @@ export default function Navbar() {
                 </Link>
                 <Menu as="div">
                   <Menu.Button
-                    className={classNames(
+                    className={clsx(
                       [
                         '/boxe',
                         '/functional-training',
@@ -91,7 +183,7 @@ export default function Navbar() {
                     )}
                   >
                     <span>Corsi</span>
-                    <ChevronDownIcon className="w-4 h-4 text-gray-300" />
+                    <ChevronDownIcon className="ui-open:rotate-90 ui-open:transform w-4 h-4 text-gray-300" />
                   </Menu.Button>
                   <Transition
                     as={Fragment}
@@ -107,8 +199,10 @@ export default function Navbar() {
                         {({ active }) => (
                           <Link
                             href="/boxe"
-                            className={classNames(
-                              active || pathname === '/' ? 'bg-gray-100' : '',
+                            className={clsx(
+                              active || pathname === '/boxe'
+                                ? 'bg-gray-100'
+                                : '',
                               'block px-4 py-2 text-sm text-gray-700'
                             )}
                             aria-current="page"
@@ -121,7 +215,7 @@ export default function Navbar() {
                         {({ active }) => (
                           <Link
                             href="/functional-training"
-                            className={classNames(
+                            className={clsx(
                               active || pathname === '/functional-training'
                                 ? 'bg-gray-100'
                                 : '',
@@ -137,7 +231,7 @@ export default function Navbar() {
                         {({ active }) => (
                           <Link
                             href="/yoga"
-                            className={classNames(
+                            className={clsx(
                               active || pathname === '/yoga'
                                 ? 'bg-gray-100'
                                 : '',
@@ -153,7 +247,7 @@ export default function Navbar() {
                         {({ active }) => (
                           <Link
                             href="/muay-thai"
-                            className={classNames(
+                            className={clsx(
                               active || pathname === '/muay-thai'
                                 ? 'bg-gray-100'
                                 : '',
@@ -170,7 +264,7 @@ export default function Navbar() {
                 </Menu>
                 <Link
                   href="/palestra"
-                  className={classNames(
+                  className={clsx(
                     pathname === '/palestra'
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -182,7 +276,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/come-iscriversi"
-                  className={classNames(
+                  className={clsx(
                     pathname === '/come-iscriversi'
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -194,7 +288,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/chi-siamo"
-                  className={classNames(
+                  className={clsx(
                     pathname === '/chi-siamo'
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -206,7 +300,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/contatti"
-                  className={classNames(
+                  className={clsx(
                     pathname === '/contatti'
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -219,132 +313,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-
-          <Disclosure.Panel className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Disclosure.Button
-                as={Link}
-                href="/"
-                className={classNames(
-                  pathname === '/'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/' ? 'page' : undefined}
-              >
-                Home
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/boxe"
-                className={classNames(
-                  pathname === '/boxe'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/boxe' ? 'page' : undefined}
-              >
-                Boxe
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/functional-training"
-                className={classNames(
-                  pathname === '/functional-training'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={
-                  pathname === '/functional-training' ? 'page' : undefined
-                }
-              >
-                Functional training
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/yoga"
-                className={classNames(
-                  pathname === '/yoga'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/yoga' ? 'page' : undefined}
-              >
-                Yoga
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/muay-thai"
-                className={classNames(
-                  pathname === '/muay-thai'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/muay-thai' ? 'page' : undefined}
-              >
-                Muay thai
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/palestra"
-                className={classNames(
-                  pathname === '/palestra'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/palestra' ? 'page' : undefined}
-              >
-                Palestra
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/come-iscriversi"
-                className={classNames(
-                  pathname === '/come-iscriversi'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={
-                  pathname === '/come-iscriversi' ? 'page' : undefined
-                }
-              >
-                Come iscriversi
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/chi-siamo"
-                className={classNames(
-                  pathname === '/chi-siamo'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/chi-siamo' ? 'page' : undefined}
-              >
-                Chi siamo
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/contatti"
-                className={classNames(
-                  pathname === '/contatti'
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block px-3 py-2 rounded-md text-base font-medium'
-                )}
-                aria-current={pathname === '/contatti' ? 'page' : undefined}
-              >
-                Contatti
-              </Disclosure.Button>
-            </div>
-          </Disclosure.Panel>
+          <MobileMenu />
         </>
       )}
     </Disclosure>
