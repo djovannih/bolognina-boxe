@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="pb-4 text-gray-200">
+    <footer className="relative z-20 pb-4 text-gray-200 bg-neutral-900">
       <div className="max-w-5xl px-4 mx-auto divide-y divide-gray-900 xl:max-w-5xl sm:px-6 md:px-8">
-        <div className="flex flex-col-reverse justify-between pt-5 pb-4 bg-top border-t border-black lg:flex-row">
+        <div className="flex flex-col-reverse justify-between pt-5 pb-4 bg-top border-t border-neutral-300 lg:flex-row">
           <ul className="flex flex-col space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
             <li>
               <a

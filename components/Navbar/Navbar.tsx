@@ -38,7 +38,7 @@ export const menuItems: MenuItem[] = [
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-neutral-900">
+    <Disclosure as="nav" className="fixed inset-0 z-10 bg-neutral-900 h-fit">
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
