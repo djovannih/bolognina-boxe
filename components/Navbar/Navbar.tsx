@@ -1,5 +1,5 @@
 'use client'
-const { Disclosure } = await import('@headlessui/react')
+import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import localFont from '@next/font/local'
 import clsx from 'clsx'
@@ -38,7 +38,7 @@ export const menuItems: MenuItem[] = [
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-neutral-900">
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">

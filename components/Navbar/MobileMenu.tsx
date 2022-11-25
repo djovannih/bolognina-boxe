@@ -1,10 +1,11 @@
-const { Disclosure } = await import('@headlessui/react')
+import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { MenuItem } from './Navbar'
+
 import SimpleTransition from '../Transitions/SimpleTransition'
+import { MenuItem } from './Navbar'
 
 interface MobileMenuProps {
   menuItems: MenuItem[]
