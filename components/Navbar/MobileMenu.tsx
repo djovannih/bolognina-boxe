@@ -25,8 +25,8 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
                 href={menuItem.href}
                 className={clsx(
                   pathname === menuItem.href
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    ? 'bg-neutral-800 text-white'
+                    : 'text-gray-300 hover:bg-neutral-800 hover:text-white',
                   'block px-3 py-2 rounded-md text-base font-medium'
                 )}
                 aria-current={pathname === menuItem.href ? 'page' : undefined}
@@ -46,7 +46,7 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
                     className={clsx(
                       pathname === '/boxe'
                         ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        : 'text-gray-300 hover:bg-neutral-800 hover:text-white',
                       'flex items-center justify-between px-3 py-2 rounded-md text-base font-medium w-full'
                     )}
                   >
@@ -62,7 +62,7 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
                           className={clsx(
                             pathname === subItem.href
                               ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              : 'text-gray-300 hover:bg-neutral-800 hover:text-white',
                             'block px-3 py-2 rounded-md text-base font-medium'
                           )}
                           aria-current={
