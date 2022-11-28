@@ -7,6 +7,68 @@ import jab from '../public/images/jab.jpg'
 import placeholder from '../public/images/placeholder.png'
 import ring from '../public/images/ring.webp'
 
+interface InfoSection {
+  title: string
+  text: string
+  link: { href: string; text: string }
+}
+
+const items: InfoSection[] = [
+  {
+    title: 'Inclusiva',
+    text: "La nostra palestra è aperta a tutte e tutti. Vogliamo che chiunque possa sentirsi realizzato/a e messo/a nelle condizioni di superare i propri limiti, in un ambiente in cui spirito di collaborazione e solidarietà sovrastano l'individualismo.",
+    link: {
+      href: '/palestra',
+      text: 'Scopri di più sulla nostra palestra',
+    },
+  },
+  {
+    title: 'Dal quartiere per il quartiere',
+    text: 'Questa palestra è stata costruito interamente dal basso, con la solidarietà di molti che ne hanno riconosciuto il valore sociale. Vogliamo essere un punto di riferimento e una ricchezza per il quartiere San Donato di Bologna.',
+    link: {
+      href: '/chi-siamo',
+      text: 'Leggi le nostre regole',
+    },
+  },
+  {
+    title: 'Boxe ma non solo',
+    text: 'Oltre al pugilato, ospitiamo diverse discipline, tra cui muay thai, yoga, ginnastica dolce, salsa, power lifting e functional training.',
+    link: {
+      href: '/corsi',
+      text: 'Tutti i nostri corsi',
+    },
+  },
+]
+
+interface StaffMember {
+  name: string
+  role: string
+  description: string
+}
+
+const staffMembers: StaffMember[] = [
+  {
+    name: 'Babbo Natale',
+    role: 'Lavoratore stagionale',
+    description: 'Porta sempre bellissimi regali',
+  },
+  {
+    name: 'Superman',
+    role: 'Supereroe',
+    description: 'Non ti consiglio di fare sparring con lui',
+  },
+  {
+    name: 'Topolino',
+    role: 'È un topo ma che parla',
+    description: 'Mi dispiace ma preferisco Paperino',
+  },
+  {
+    name: 'Djovanni',
+    role: 'Content creator & developer',
+    description: 'Ottimo programmatore, ottimo videomaker, pessimo pugile',
+  },
+]
+
 export default function Page() {
   return (
     <>
@@ -34,66 +96,27 @@ export default function Page() {
               <Image src={jab} alt="Ring" priority className="" />
             </div>
             <div className="flex flex-col flex-wrap -mb-10 text-center lg:py-6 lg:w-1/2 lg:pl-12 lg:text-left">
-              <div
-                className="flex flex-col items-center mb-10 lg:items-start delay-[200ms] duration-[500ms] taos:translate-x-[200px] taos:opacity-0"
-                data-taos-offset="200"
-              >
-                <div className="flex-grow">
-                  <h2 className="mb-3 text-2xl font-medium text-white title-font">
-                    Inclusiva
-                  </h2>
-                  <p className="mb-2 text-lg leading-relaxed text-neutral-300">
-                    La nostra palestra è aperta a tutte e tutti. Vogliamo che
-                    chiunque possa sentirsi realizzato/a e messo/a nelle
-                    condizioni di superare i propri limiti, in un ambiente in
-                    cui spirito di collaborazione e solidarietà sovrastano
-                    l&apos;individualismo.
-                  </p>
-                  <Link
-                    href="/palestra"
-                    className="text-lg leading-relaxed text-red-600"
-                  >
-                    Scopri di più sulla nostra palestra
-                  </Link>
+              {items.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex flex-col items-center mb-10 lg:items-start"
+                >
+                  <div className="flex-grow">
+                    <h2 className="mb-3 text-2xl font-medium text-white title-font">
+                      {item.title}
+                    </h2>
+                    <p className="mb-2 text-lg leading-relaxed text-neutral-300">
+                      {item.text}
+                    </p>
+                    <Link
+                      href={item.link.href}
+                      className="text-lg leading-relaxed text-red-600"
+                    >
+                      {item.link.text}
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col items-center mb-10 lg:items-start">
-                <div className="flex-grow">
-                  <h2 className="mb-3 text-2xl font-medium text-white title-font">
-                    Dal quartiere per il quartiere
-                  </h2>
-                  <p className="mb-2 text-lg leading-relaxed text-neutral-300">
-                    Questa palestra è stata costruito interamente dal basso, con
-                    la solidarietà di molti che ne hanno riconosciuto il valore
-                    sociale. Vogliamo essere un punto di riferimento e una
-                    ricchezza per il quartiere San Donato di Bologna
-                  </p>
-                  <Link
-                    href="/palestra"
-                    className="text-lg leading-relaxed text-red-600"
-                  >
-                    Leggi le nostre regole
-                  </Link>
-                </div>
-              </div>
-              <div className="flex flex-col items-center mb-10 lg:items-start">
-                <div className="flex-grow">
-                  <h2 className="mb-3 text-2xl font-medium text-white title-font">
-                    Boxe ma non solo
-                  </h2>
-                  <p className="mb-2 text-lg leading-relaxed text-neutral-300">
-                    Oltre al pugilato, ospitiamo diverse discipline, tra cui
-                    muay thai, yoga, ginnastica dolce, salsa, power lifting e
-                    functional training
-                  </p>
-                  <Link
-                    href="/palestra"
-                    className="text-lg leading-relaxed text-red-600"
-                  >
-                    Tutti i nostri corsi
-                  </Link>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -111,85 +134,31 @@ export default function Page() {
               </div>
               <div className="container px-5 py-16 mx-auto">
                 <div className="flex flex-wrap -m-4">
-                  <div className="p-4 lg:w-1/4 md:w-1/2">
-                    <div className="flex flex-col items-center h-full text-center">
-                      <Image
-                        src={placeholder}
-                        alt="Team"
-                        className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
-                      />
-                      <div className="w-full">
-                        <h2 className="text-lg font-medium text-white title-font">
-                          Babbo Natale
-                        </h2>
-                        <h3 className="mb-3 text-neutral-200">
-                          Lavoratore stagionale
-                        </h3>
-                        <p className="mb-4 text-neutral-400">
-                          Porta sempre bellissimi regali
-                        </p>
+                  {staffMembers.map((staffMember) => (
+                    <div
+                      key={staffMember.name}
+                      className="p-4 lg:w-1/4 md:w-1/2"
+                    >
+                      <div className="flex flex-col items-center h-full text-center">
+                        <Image
+                          src={placeholder}
+                          alt="Team"
+                          className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
+                        />
+                        <div className="w-full">
+                          <h2 className="text-lg font-medium text-white title-font">
+                            {staffMember.name}
+                          </h2>
+                          <h3 className="mb-3 text-neutral-200">
+                            {staffMember.role}
+                          </h3>
+                          <p className="mb-4 text-neutral-400">
+                            {staffMember.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="p-4 lg:w-1/4 md:w-1/2">
-                    <div className="flex flex-col items-center h-full text-center">
-                      <Image
-                        src={placeholder}
-                        alt="Team"
-                        className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
-                      />
-                      <div className="w-full">
-                        <h2 className="text-lg font-medium text-white title-font">
-                          Superman
-                        </h2>
-                        <h3 className="mb-3 text-neutral-200">Supereroe</h3>
-                        <p className="mb-4 text-neutral-400">
-                          Non ti consiglio di fare sparring con lui
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4 lg:w-1/4 md:w-1/2">
-                    <div className="flex flex-col items-center h-full text-center">
-                      <Image
-                        src={placeholder}
-                        alt="Team"
-                        className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
-                      />
-                      <div className="w-full">
-                        <h2 className="text-lg font-medium text-white title-font">
-                          Topolino
-                        </h2>
-                        <h3 className="mb-3 text-neutral-200">
-                          È un topo ma che parla
-                        </h3>
-                        <p className="mb-4 text-neutral-400">
-                          Mi dispiace ma preferisco Paperino
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4 lg:w-1/4 md:w-1/2">
-                    <div className="flex flex-col items-center h-full text-center">
-                      <Image
-                        src={placeholder}
-                        alt="Team"
-                        className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
-                      />
-                      <div className="w-full">
-                        <h2 className="text-lg font-medium text-white title-font">
-                          Djovanni
-                        </h2>
-                        <h3 className="mb-3 text-neutral-200">
-                          Content creator & developer
-                        </h3>
-                        <p className="mb-4 text-neutral-400">
-                          Ottimo programmatore, ottimo videomaker, pessimo
-                          pugile
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
