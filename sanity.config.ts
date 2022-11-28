@@ -19,8 +19,8 @@ const title =
 
 export default defineConfig({
   basePath: '/studio',
-  projectId,
-  dataset,
+  projectId: projectId!,
+  dataset: dataset!,
   title,
   schema: {
     // If you want more content types, you can add them to this array

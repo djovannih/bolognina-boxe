@@ -55,7 +55,7 @@ export default async function revalidate(
     const updatedRoutes = `Updated routes: ${staleRoutes.join(', ')}`
     console.log(updatedRoutes)
     return res.status(200).send(updatedRoutes)
-  } catch (err) {
+  } catch (err: any) {
     console.error(err)
     return res.status(500).send(err.message)
   }
@@ -91,7 +91,7 @@ async function queryAllRoutes(client: SanityClient): Promise<StaleRoute[]> {
 }
 
 async function mergeWithMoreStories(
-  client,
+  client: SanityClient,
   slugs: string[]
 ): Promise<string[]> {
   const moreStories = await client.fetch(
@@ -109,7 +109,7 @@ async function queryStaleAuthorRoutes(
   client: SanityClient,
   id: string
 ): Promise<StaleRoute[]> {
-  let slugs = await client.fetch(
+  let slugs: string[] = await client.fetch(
     groq`*[_type == "author" && _id == $id] {
     "slug": *[_type == "post" && references(^._id)].slug.current
   }["slug"][]`,
@@ -118,7 +118,7 @@ async function queryStaleAuthorRoutes(
 
   if (slugs.length > 0) {
     slugs = await mergeWithMoreStories(client, slugs)
-    return ['/', ...slugs.map((slug) => `/posts/${slug}`)]
+    return ['/', ...slugs.map((slug) => `/posts/${slug}` as StaleRoute)]
   }
 
   return []
@@ -128,12 +128,12 @@ async function queryStalePostRoutes(
   client: SanityClient,
   id: string
 ): Promise<StaleRoute[]> {
-  let slugs = await client.fetch(
+  let slugs: string[] = await client.fetch(
     groq`*[_type == "post" && _id == $id].slug.current`,
     { id }
   )
 
   slugs = await mergeWithMoreStories(client, slugs)
 
-  return ['/', ...slugs.map((slug) => `/posts/${slug}`)]
+  return ['/', ...slugs.map((slug) => `/posts/${slug}` as StaleRoute)]
 }

@@ -34,7 +34,10 @@ export default function Page() {
               <Image src={jab} alt="Ring" priority className="" />
             </div>
             <div className="flex flex-col flex-wrap -mb-10 text-center lg:py-6 lg:w-1/2 lg:pl-12 lg:text-left">
-              <div className="flex flex-col items-center mb-10 lg:items-start">
+              <div
+                className="flex flex-col items-center mb-10 lg:items-start delay-[200ms] duration-[500ms] taos:translate-x-[200px] taos:opacity-0"
+                data-taos-offset="200"
+              >
                 <div className="flex-grow">
                   <h2 className="mb-3 text-2xl font-medium text-white title-font">
                     Inclusiva

@@ -1,4 +1,4 @@
-import { UserIcon } from '@sanity/icons'
+import { UserIcon } from '@heroicons/react/24/outline'
 import { defineType } from 'sanity'
 
 export default defineType({

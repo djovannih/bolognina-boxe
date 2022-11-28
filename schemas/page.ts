@@ -1,4 +1,4 @@
-import { BookIcon } from '@sanity/icons'
+import { BookOpenIcon } from '@heroicons/react/24/outline'
 import { defineType } from 'sanity'
 
 import authorType from './author'
@@ -18,7 +18,7 @@ import authorType from './author'
 export default defineType({
   name: 'page',
   title: 'Pagina',
-  icon: BookIcon,
+  icon: BookOpenIcon,
   type: 'document',
   fields: [
     {

@@ -16,9 +16,11 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
+    "@next/env": "^13.0.5",
     "@next/font": "^13.0.5",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
+    "@sanity/ui": "^1.0.0",
     "@sanity/vision": "3.0.0-rc.2",
     "next": "^13.0.5",
     "next-sanity": "^2.1.0",
@@ -32,6 +34,7 @@
     "suspend-react": "^0.0.8"
   },
   "devDependencies": {
+    "@headlessui/tailwindcss": "^0.1.1",
     "@types/react": "^18.0.25",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
@@ -43,7 +46,6 @@
     "prettier-plugin-packagejson": "^2.3.0",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "tailwindcss": "^3.2.4",
-    "@headlessui/tailwindcss": "^0.1.1",
     "typescript": "^4.9.3"
   }
 }

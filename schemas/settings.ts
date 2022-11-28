@@ -1,11 +1,11 @@
-import { CogIcon } from '@sanity/icons'
+import { Cog6ToothIcon } from '@heroicons/react/24/outline'
 import { defineType } from 'sanity'
 
 export default defineType({
   name: 'settings',
   title: 'Settings',
   type: 'document',
-  icon: CogIcon,
+  icon: Cog6ToothIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
