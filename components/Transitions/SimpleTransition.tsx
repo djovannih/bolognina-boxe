@@ -1,4 +1,4 @@
-const { Transition } = await import('@headlessui/react')
+import { Transition } from '@headlessui/react'
 import { PropsWithChildren } from 'react'
 
 export default function SimpleTransition({ children }: PropsWithChildren) {
