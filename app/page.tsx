@@ -1,7 +1,9 @@
+'use client'
 import 'styles/index.css'
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import jab from '../public/images/jab.jpg'
 import placeholder from '../public/images/placeholder.png'
@@ -70,47 +72,58 @@ const staffMembers: StaffMember[] = [
 ]
 
 export default function Page() {
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const updateScrollY = () => setScrollY(window.scrollY)
+    updateScrollY()
+    window.addEventListener('scroll', updateScrollY)
+    return () => window.removeEventListener('scroll', updateScrollY)
+  }, [])
+
   return (
     <>
       <Image
         src={ring}
         alt="Ring"
         priority
-        className="fixed inset-0 w-screen h-auto top-16 opacity-10"
+        className="fixed inset-0 min-h-[50vh] h-auto object-cover min-w-[100vw] top-16 opacity-10"
       />
-      <section className="z-20 text-black body-font lg:pt-20">
-        <div className="container px-5 pt-32 mx-auto h-80 lg:h-96 lg:px-4 lg:py-4">
-          <div className="fixed flex flex-col w-full mb-2 text-left md:text-center ">
-            <h1 className="mb-2 text-6xl font-bold tracking-tighter text-white uppercase lg:text-8xl md:text-7xl ">
-              Bolognina boxe
+      <section className="z-20 text-black md:pt-20">
+        <div className="container flex justify-end px-5 pt-32 mx-auto mb-72 h-fit sm:h-[50vh] md:px-4 md:py-4">
+          <div
+            className="fixed flex flex-col mt-8 text-left sm:mt-36"
+            style={{ opacity: 1 - scrollY / 100 / 4 }}
+          >
+            <h1 className="mb-2 text-6xl font-bold tracking-widest text-left text-white uppercase whitespace-pre lg:text-8xl md:text-7xl  leading-none font-['Oswald']">
+              {'Bolognina\nboxe'}
             </h1>
-            <br></br>
-            <p className="mx-auto text-2xl font-normal leading-relaxed text-gray-600 dark:text-gray-300 lg:w-2/3">
+            <p className="text-sm font-normal text-left text-gray-500 md:text-2xl dark:text-gray-300">
               Gente che lotta dentro e fuori dal ring
             </p>
           </div>
         </div>
-        <section className="relative text-gray-600 body-font bg-neutral-900">
+        <section className="relative text-gray-500 bg-neutral-900">
           <div className="container flex flex-wrap px-5 py-12 mx-auto">
-            <div className="w-full mb-10 overflow-hidden rounded-lg lg:w-1/2 lg:mb-0">
-              <Image src={jab} alt="Ring" priority className="" />
-            </div>
-            <div className="flex flex-col flex-wrap -mb-10 text-center lg:py-6 lg:w-1/2 lg:pl-12 lg:text-left">
+            <div className="flex flex-wrap justify-between gap-8 mb-10 lg:py-6 lg:pl-12 lg:text-left">
               {items.map((item) => (
                 <div
                   key={item.title}
-                  className="flex flex-col items-center mb-10 lg:items-start"
+                  className="flex flex-col flex-grow basis-full sm:basis-1/3 lg:basis-1/4 shrink-0"
                 >
-                  <div className="flex-grow">
-                    <h2 className="mb-3 text-2xl font-medium text-white title-font">
+                  <div className="w-full mb-4 overflow-hidden rounded-lg">
+                    <Image src={jab} alt="Ring" />
+                  </div>
+                  <div className="flex flex-col mb-10">
+                    <h2 className="mb-3 text-2xl font-medium text-white">
                       {item.title}
                     </h2>
-                    <p className="mb-2 text-lg leading-relaxed text-neutral-300">
+                    <p className="mb-2 text-lg leading-relaxed text-left text-neutral-300">
                       {item.text}
                     </p>
                     <Link
                       href={item.link.href}
-                      className="text-lg leading-relaxed text-red-600"
+                      className="text-lg leading-relaxed text-red-500"
                     >
                       {item.link.text}
                     </Link>
@@ -120,10 +133,10 @@ export default function Page() {
             </div>
           </div>
         </section>
-        <section className="relative z-20 text-gray-600 body-font bg-neutral-900">
+        <section className="relative z-20 text-gray-500 bg-neutral-900">
           <div className="container px-5 mx-auto">
             <div className="text-center">
-              <h2 className="mb-4 font-medium text-white sm:text-5xl title-font">
+              <h2 className="mb-4 text-3xl font-medium text-white sm:text-5xl">
                 I nostri istruttori
               </h2>
               <p className="mx-auto text-base leading-relaxed xl:w-2/4 lg:w-3/4 text-neutral-300">
@@ -146,7 +159,7 @@ export default function Page() {
                           className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
                         />
                         <div className="w-full">
-                          <h2 className="text-lg font-medium text-white title-font">
+                          <h2 className="text-lg font-medium text-white">
                             {staffMember.name}
                           </h2>
                           <h3 className="mb-3 text-neutral-200">

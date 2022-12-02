@@ -46,12 +46,14 @@ export default function Footer() {
             </li>
           </ul>
           <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-            <a
-              href="/"
-              className="font-semibold tracking-tight text-gray-200 transition-colors duration-300 text-md hover:text-white hover:text-deep-purple-accent-400"
-            >
-              © 2023 Bolognina boxe
-            </a>
+            <li>
+              <a
+                href="/"
+                className="font-semibold tracking-tight text-gray-200 transition-colors duration-300 text-md hover:text-white hover:text-deep-purple-accent-400"
+              >
+                © 2023 Bolognina boxe
+              </a>
+            </li>
           </ul>
         </div>
       </div>

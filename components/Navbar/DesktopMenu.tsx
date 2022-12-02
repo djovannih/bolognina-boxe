@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import SimpleTransition from 'components/Transitions/SimpleTransition'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Fragment } from 'react'
 
 import { MenuItem } from './Navbar'
 
@@ -17,7 +18,7 @@ export default function DesktopMenu({ menuItems }: DesktopMenuProps) {
   return (
     <div className="absolute inset-y-0 right-0 items-center hidden pr-2 lg:flex gap-x-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
       {menuItems.map((menuItem) => (
-        <>
+        <Fragment key={menuItem.label}>
           {menuItem.href ? (
             <Link
               key={menuItem.label}
@@ -75,7 +76,7 @@ export default function DesktopMenu({ menuItems }: DesktopMenuProps) {
               </Menu>
             )
           )}
-        </>
+        </Fragment>
       ))}
     </div>
   )

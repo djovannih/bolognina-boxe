@@ -3,6 +3,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Fragment } from 'react'
 
 import SimpleTransition from '../Transitions/SimpleTransition'
 import { MenuItem } from './Navbar'
@@ -18,7 +19,7 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
     <Disclosure.Panel className="lg:hidden">
       <div className="px-2 pt-2 pb-3 space-y-1">
         {menuItems.map((menuItem) => (
-          <>
+          <Fragment key={menuItem.label}>
             {menuItem.href && (
               <Link
                 key={menuItem.label}
@@ -77,7 +78,7 @@ export default function MobileMenu({ menuItems }: MobileMenuProps) {
                 </>
               </Disclosure>
             )}
-          </>
+          </Fragment>
         ))}
       </div>
     </Disclosure.Panel>

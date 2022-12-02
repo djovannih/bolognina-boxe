@@ -43,16 +43,6 @@ export default function Navbar() {
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="relative flex items-center justify-between h-16">
-              <div className="inset-y-0 left-0 flex items-center lg:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Apri il menù principale</span>
-                  {open ? (
-                    <XMarkIcon className="block w-6 h-6" aria-hidden="true" />
-                  ) : (
-                    <Bars3Icon className="block w-6 h-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
               <Link href="/" className="flex pr-3 h-9 gap-x-2 lg:pr-0">
                 <Image
                   src={logo}
@@ -69,6 +59,16 @@ export default function Navbar() {
                   Bolognina Boxe
                 </span>
               </Link>
+              <div className="inset-y-0 left-0 flex items-center lg:hidden">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <span className="sr-only">Apri il menù principale</span>
+                  {open ? (
+                    <XMarkIcon className="block w-6 h-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block w-6 h-6" aria-hidden="true" />
+                  )}
+                </Disclosure.Button>
+              </div>
               <DesktopMenu menuItems={menuItems} />
             </div>
           </div>
