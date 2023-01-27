@@ -1,5 +1,5 @@
-export const projectId = import.meta.env.SANITY_STUDIO_PROJECT_ID
-export const dataset = import.meta.env.SANITY_STUDIO_DATASET
+export const projectId = import.meta.env.SANITY_STUDIO_API_PROJECT_ID
+export const dataset = import.meta.env.SANITY_STUDIO_API_DATASET
 
 export const apiVersion = import.meta.env.SANITY_STUDIO_API_VERSION
 
