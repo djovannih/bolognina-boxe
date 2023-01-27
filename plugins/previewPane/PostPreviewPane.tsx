@@ -2,16 +2,11 @@
  * This component is responsible for rendering a preview of a post inside the Studio.
  */
 import { Card, Flex, Spinner, Text } from '@sanity/ui'
-import { getSecret } from 'plugins/productionUrl/utils'
-import React, {
-  memo,
-  startTransition,
-  Suspense,
-  useEffect,
-  useState,
-} from 'react'
+import { memo, startTransition, Suspense, useEffect, useState } from 'react'
 import { useClient } from 'sanity'
 import { suspend } from 'suspend-react'
+
+import { getSecret } from '../productionUrl/utils'
 
 type Props = {
   slug?: string

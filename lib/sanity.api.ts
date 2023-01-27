@@ -1,10 +1,8 @@
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+export const projectId = import.meta.env.SANITY_STUDIO_PROJECT_ID
+export const dataset = import.meta.env.SANITY_STUDIO_DATASET
 
-export const apiVersion =
-  process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2022-11-15'
+export const apiVersion = import.meta.env.SANITY_STUDIO_API_VERSION
 
-export const useCdn =
-  typeof document !== 'undefined' && process.env.NODE_ENV === 'production'
+export const useCdn = typeof document !== 'undefined' && import.meta.env.PROD
 
 export const previewSecretId: `${string}.${string}` = 'preview.secret'

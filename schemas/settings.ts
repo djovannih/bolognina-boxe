@@ -11,10 +11,10 @@ export default defineType({
   fields: [
     {
       name: 'title',
-      description: 'This field is the title of your blog.',
-      title: 'Title',
+      description: 'Titolo del sito',
+      title: 'Titolo',
       type: 'string',
-      initialValue: 'Blog.',
+      initialValue: 'Bolognina boxe',
       validation: (rule) => rule.required(),
     },
   ],

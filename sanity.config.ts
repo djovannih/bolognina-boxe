@@ -3,19 +3,24 @@
  */
 
 import { visionTool } from '@sanity/vision'
-import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
-import { previewDocumentNode } from 'plugins/previewPane'
-import { productionUrl } from 'plugins/productionUrl'
-import { settingsPlugin, settingsStructure } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import authorType from 'schemas/author'
-import postType from 'schemas/page'
-import settingsType from 'schemas/settings'
 
-const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
+import {
+  apiVersion,
+  dataset,
+  previewSecretId,
+  projectId,
+} from './lib/sanity.api'
+import { previewDocumentNode } from './plugins/previewPane'
+import { productionUrl } from './plugins/productionUrl'
+import { settingsPlugin, settingsStructure } from './plugins/settings'
+import cardType from './schemas/card'
+import homepageType from './schemas/homepage'
+import settingsType from './schemas/settings'
+
+const title = import.meta.env.SANITY_STUDIO_PROJECT_TITLE || 'Bolognina boxe'
 
 export default defineConfig({
   basePath: '/studio',
@@ -24,7 +29,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [settingsType, postType, authorType],
+    types: [cardType, homepageType, settingsType],
   },
   plugins: [
     deskTool({
@@ -38,7 +43,7 @@ export default defineConfig({
     productionUrl({
       apiVersion,
       previewSecretId,
-      types: [postType.name, settingsType.name],
+      types: [homepageType.name, settingsType.name],
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
