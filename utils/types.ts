@@ -1,8 +1,20 @@
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import { Image } from '@sanity/types'
 
 export type Card = {
   title: string
   content: string
   link: { text: string; url: string }
-  image: SanityImageSource
+  image: Image
+}
+
+export type StaffMember = {
+  name: string
+  role: string
+  description: string
+  image: Image
+}
+
+export type HomepageData = {
+  cards: Card[]
+  staff: StaffMember[]
 }

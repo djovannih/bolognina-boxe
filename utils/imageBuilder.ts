@@ -6,4 +6,4 @@ import sanityClient from './sanityClient'
 const imageBuilder = createImageUrlBuilder(sanityClient)
 
 export const urlForImage = (source: SanityImageSource) =>
-  source ? imageBuilder.image(source).auto('format').fit('max').url() : ''
+  imageBuilder.image(source).auto('format').fit('max').url()

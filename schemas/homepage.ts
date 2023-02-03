@@ -14,5 +14,12 @@ export default defineType({
       of: [{ type: 'card' }],
       validation: (Rule) => Rule.required().length(3),
     },
+    {
+      name: 'staff',
+      title: 'Membri dello staff',
+      type: 'array',
+      of: [{ type: 'staff' }],
+      validation: (Rule) => Rule.required(),
+    },
   ],
 })

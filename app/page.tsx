@@ -5,44 +5,14 @@ import { groq } from 'next-sanity'
 import { urlForImage } from 'utils/imageBuilder'
 import sanityClient from 'utils/sanityClient'
 
-import placeholder from '../public/images/placeholder.png'
 import ring from '../public/images/ring.webp'
-import { Card } from '../utils/types'
+import { HomepageData } from '../utils/types'
 
-interface StaffMember {
-  name: string
-  role: string
-  description: string
-}
-
-const staffMembers: StaffMember[] = [
-  {
-    name: 'Babbo Natale',
-    role: 'Lavoratore stagionale',
-    description: 'Porta sempre bellissimi regali',
-  },
-  {
-    name: 'Superman',
-    role: 'Supereroe',
-    description: 'Non ti consiglio di fare sparring con lui',
-  },
-  {
-    name: 'Topolino',
-    role: 'È un topo ma che parla',
-    description: 'Mi dispiace ma preferisco Paperino',
-  },
-  {
-    name: 'Djovanni',
-    role: 'Content creator & developer',
-    description: 'Ottimo programmatore, ottimo videomaker, pessimo pugile',
-  },
-]
-
-const getCards = async (): Promise<Card[]> =>
-  (await sanityClient.fetch(groq`*[_type == "homepage"]`))?.at(0)?.cards || []
+const getData = async (): Promise<HomepageData> =>
+  await sanityClient.fetch(groq`*[_type == "homepage"][0]`)
 
 export default async function Page() {
-  const cards = await getCards()
+  const { cards, staff } = await getData()
 
   return (
     <>
@@ -102,17 +72,18 @@ export default async function Page() {
                 <div className="inline-flex w-16 h-1 bg-white rounded-full"></div>
               </div>
               <div className="container px-5 py-16 mx-auto">
-                <div className="flex flex-wrap -m-4">
-                  {staffMembers.map((staffMember) => (
+                <div className="flex flex-wrap justify-center -m-4">
+                  {staff.map((staffMember) => (
                     <div
                       key={staffMember.name}
-                      className="p-4 lg:w-1/4 md:w-1/2"
+                      className="h-full p-4 lg:w-1/4 md:w-1/2"
                     >
                       <div className="flex flex-col items-center h-full text-center">
                         <Image
-                          src={placeholder}
-                          alt="Team"
-                          className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg"
+                          src={urlForImage(staffMember.image)}
+                          alt={staffMember.image.alt as string}
+                          fill
+                          className="flex-shrink-0 object-cover object-center w-full h-56 mb-4 rounded-lg !relative aspect-square"
                         />
                         <div className="w-full">
                           <h2 className="text-lg font-medium text-white">
