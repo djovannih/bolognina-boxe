@@ -1,12 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "build": "concurrently \"npx @sanity/cli build\" \"next build\"",
-    "dev": "concurrently \"next dev\" \"npx @sanity/cli dev\"",
+    "build": "next build",
+    "dev": "next dev",
+    "studio:dev": "sanity dev",
     "format": "pnpm prettier --write . --ignore-path .gitignore",
     "lint": "next lint -- --ignore-path .gitignore",
     "lint:fix": "pnpm format && pnpm lint -- --fix",
-    "start": "concurrently \"npx @sanity/cli start\" \"next start\"",
+    "start": "next start",
     "type-check": "tsc --noEmit"
   },
   "prettier": {
@@ -18,6 +19,7 @@
     "@heroicons/react": "^2.0.13",
     "@next/env": "^13.0.5",
     "@next/font": "^13.0.5",
+    "@portabletext/react": "^2.0.1",
     "@sanity/client": "^4.0.1",
     "@sanity/icons": "^2.2.2",
     "@sanity/image-url": "^1.0.2",
@@ -30,18 +32,18 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "rxjs": "^7.8.0",
-    "sanity": "3.2.5",
+    "sanity": "3.2.6",
     "sanity-plugin-asset-source-unsplash": "1.0.6",
     "styled-components": "^5.3.6",
     "suspend-react": "^0.0.9"
   },
   "devDependencies": {
     "@headlessui/tailwindcss": "^0.1.2",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.11.18",
     "@types/react": "^18.0.27",
     "autoprefixer": "^10.4.13",
     "clsx": "^1.2.1",
-    "concurrently": "^7.6.0",
     "eslint": "^8.32.0",
     "eslint-config-next": "^13.0.5",
     "eslint-plugin-simple-import-sort": "^9.0.0",

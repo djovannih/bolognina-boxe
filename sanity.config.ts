@@ -18,6 +18,7 @@ import { productionUrl } from './plugins/productionUrl'
 import { settingsPlugin, settingsStructure } from './plugins/settings'
 import cardType from './schemas/card'
 import homepageType from './schemas/homepage'
+import pageType from './schemas/page'
 import settingsType from './schemas/settings'
 
 const title = import.meta.env.SANITY_STUDIO_PROJECT_TITLE || 'Bolognina boxe'
@@ -29,7 +30,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [cardType, homepageType, settingsType],
+    types: [cardType, homepageType, pageType, settingsType],
   },
   plugins: [
     deskTool({
@@ -43,7 +44,7 @@ export default defineConfig({
     productionUrl({
       apiVersion,
       previewSecretId,
-      types: [homepageType.name, settingsType.name],
+      types: [homepageType.name, settingsType.name, pageType.name],
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),

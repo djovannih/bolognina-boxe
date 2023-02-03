@@ -1,5 +1,3 @@
-import 'styles/index.css'
-
 import MainImage from 'components/Homepage/MainImage'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -66,7 +64,7 @@ export default async function Page() {
                 >
                   <div className="relative w-full mb-4 overflow-hidden rounded-lg">
                     <Image
-                      src={urlForImage(card.image).url()}
+                      src={urlForImage(card.image)}
                       alt={card.title}
                       fill
                       className="!relative"
