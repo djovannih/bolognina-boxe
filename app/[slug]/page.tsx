@@ -24,7 +24,7 @@ const getPage = async (slug: string): Promise<any> =>
     { slug }
   )
 
-const Page = async (context: any) => {
+export default async function Page(context: any) {
   const page = await getPage(context.params.slug)
 
   return (
@@ -47,5 +47,3 @@ export async function generateStaticParams() {
   )
   return paths.map((slug: string) => ({ slug }))
 }
-
-export default Page
