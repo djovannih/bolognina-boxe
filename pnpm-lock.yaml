@@ -4,8 +4,8 @@ specifiers:
   '@headlessui/react': ^1.7.7
   '@headlessui/tailwindcss': ^0.1.2
   '@heroicons/react': ^2.0.13
-  '@next/env': ^13.0.5
-  '@next/font': ^13.0.5
+  '@next/env': ^13.1.5
+  '@next/font': ^13.1.5
   '@portabletext/react': ^2.0.1
   '@sanity/client': ^4.0.1
   '@sanity/icons': ^2.2.2
@@ -19,9 +19,9 @@ specifiers:
   autoprefixer: ^10.4.13
   clsx: ^1.2.1
   eslint: ^8.32.0
-  eslint-config-next: ^13.0.5
+  eslint-config-next: ^13.1.5
   eslint-plugin-simple-import-sort: ^9.0.0
-  next: ^13.0.5
+  next: ^13.1.5
   next-sanity: ^4.1.1
   postcss: ^8.4.21
   prettier: ^2.8.3
@@ -1242,7 +1242,7 @@ packages:
       eventsource: 2.0.2
       fast-deep-equal: 3.1.3
       groq: 3.2.5
-      groq-js: 1.2.1-beta.1
+      groq-js: 1.1.7
       mendoza: 2.1.1
       simple-get: 4.0.1
       split2: 4.1.0
@@ -3596,8 +3596,8 @@ packages:
     resolution: {integrity: sha512-qJeuEgziddryH1ClsJvMoZM9aXNQbBViNZZrJwhHKr2wU8HGGM7uNWNVFglWXMX60MMaa2SClX3UohP76Ut68g==}
     dev: false
 
-  /groq-js/1.2.1-beta.1:
-    resolution: {integrity: sha512-hmfctKi0Za0wj9VRRVytMiJKAe/QdqOtYKnHAIL8VgzuLSOP3EzXHEYJFNDbkaml8mVuFvfT9vO6DsPtofPp8w==}
+  /groq-js/1.1.7:
+    resolution: {integrity: sha512-MpcHeNRSqFKdsoYd8vKiTa+Yojz5k83GyB4MCO7u5K2bizu5KAr3LdU7QxyoLotKGqF6yxiddVKYuTbCta2Bew==}
     engines: {node: '>= 14'}
     dev: false
 
