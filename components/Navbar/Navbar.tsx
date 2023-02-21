@@ -26,7 +26,6 @@ export const menuItems: MenuItem[] = [
     label: 'Corsi',
     children: [
       { href: '/boxe', label: 'Boxe' },
-      { href: '/functional-training', label: 'Functional training' },
       { href: '/yoga', label: 'Yoga' },
       { href: '/muay-thai', label: 'Muay thai' },
     ],
