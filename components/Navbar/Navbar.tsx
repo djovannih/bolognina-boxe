@@ -28,6 +28,8 @@ export const menuItems: MenuItem[] = [
       { href: '/boxe', label: 'Boxe' },
       { href: '/yoga', label: 'Yoga' },
       { href: '/muay-thai', label: 'Muay thai' },
+      { href: '/danza-fit', label: 'Danza fit' },
+      { href: '/hip-hop', label: 'Hip hop' },
     ],
   },
   { href: '/palestra', label: 'Palestra' },
