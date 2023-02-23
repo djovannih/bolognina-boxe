@@ -1,5 +1,7 @@
 import { defineType } from 'sanity'
 
+import gallery from './gallery'
+
 export default defineType({
   name: 'page',
   title: 'Pagina',
@@ -9,7 +11,7 @@ export default defineType({
       name: 'title',
       title: 'Titolo',
       type: 'string',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'slug',
@@ -18,10 +20,10 @@ export default defineType({
       options: {
         source: 'title',
         maxLength: 200,
-        slugify: (input) =>
+        slugify: (input: any) =>
           input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'content',
@@ -43,5 +45,6 @@ export default defineType({
         },
       ],
     },
+    gallery,
   ],
 })
