@@ -1,4 +1,5 @@
 import MainImage from 'components/Homepage/MainImage'
+import Schedule from 'components/Homepage/Schedule'
 import Image from 'next/image'
 import Link from 'next/link'
 import { groq } from 'next-sanity'
@@ -26,7 +27,7 @@ export default async function Page() {
         <MainImage />
         <section className="relative text-gray-500 bg-neutral-900">
           <div className="container flex flex-wrap px-5 py-12 mx-auto">
-            <div className="flex flex-wrap justify-between gap-8 mb-10 lg:py-6 lg:text-left">
+            <div className="flex flex-wrap justify-between w-full gap-8 mb-10 lg:py-6 lg:text-left">
               {cards.map((card) => (
                 <div
                   key={card.title}
@@ -61,51 +62,14 @@ export default async function Page() {
         </section>
         <section className="relative z-20 text-gray-500 bg-neutral-900">
           <div className="container flex flex-wrap px-5 py-12 mx-auto">
-            <h2 className="mx-auto mb-4 text-3xl font-medium text-white sm:text-5xl">
+            <h2 className="mx-auto mb-8 text-3xl font-medium text-white sm:text-6xl">
               Orario corsi
             </h2>
-            <div className="flex flex-wrap justify-between gap-8 mb-10 lg:py-6 lg:text-left">
-              <div className="flex flex-col flex-grow basis-full sm:basis-1/3 lg:basis-1/4 shrink-0">
-                <div className="relative w-full mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src={urlForImage(blueSchedule)}
-                    alt={blueSchedule.alt as string}
-                    fill
-                    className="!relative"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col flex-grow basis-full sm:basis-1/3 lg:basis-1/4 shrink-0">
-                <div className="relative w-full mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src={urlForImage(redSchedule)}
-                    alt={redSchedule.alt as string}
-                    fill
-                    className="!relative"
-                  />
-                </div>
-              </div>
+            <div className="flex flex-wrap justify-between w-full gap-8 mb-10 lg:py-6 lg:text-left">
+              <Schedule image={blueSchedule} />
+              <Schedule image={redSchedule} />
             </div>
           </div>
-          {/* <div className="container px-5 mx-auto">
-            <h2 className="mb-4 text-3xl font-medium text-center text-white sm:text-5xl">
-              Orario corsi
-            </h2>
-            <div className="flex flex-wrap justify-between gap-8">
-              <Image
-                src={urlForImage(redSchedule)}
-                alt={redSchedule.alt as string}
-                fill
-                className="!relative lg:max-w-[48%]"
-              />
-              <Image
-                src={urlForImage(blueSchedule)}
-                alt={blueSchedule.alt as string}
-                fill
-                className="!relative lg:max-w-[48%]"
-              />
-            </div>
-          </div> */}
         </section>
         {/* <StaffSection staff={staff} /> */}
       </section>
