@@ -20,6 +20,7 @@ import homepageType from './schemas/homepage'
 import menuType from './schemas/menu'
 import pageType from './schemas/page'
 import staffType from './schemas/staff'
+import youTubeType from './schemas/youtube'
 
 const title = import.meta.env.SANITY_STUDIO_PROJECT_TITLE || 'Bolognina boxe'
 
@@ -30,7 +31,7 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [cardType, staffType, homepageType, pageType, menuType],
+    types: [cardType, staffType, homepageType, pageType, menuType, youTubeType],
   },
   plugins: [
     deskTool({

@@ -21,6 +21,7 @@ specifiers:
   eslint: ^8.32.0
   eslint-config-next: ^13.1.5
   eslint-plugin-simple-import-sort: ^9.0.0
+  get-youtube-id: ^1.0.1
   next: ^13.1.5
   next-sanity: ^4.1.1
   postcss: ^8.4.21
@@ -30,6 +31,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-is: ^18.2.0
+  react-lite-youtube-embed: ^2.3.52
   rxjs: ^7.8.0
   sanity: 3.2.6
   sanity-plugin-asset-source-unsplash: 1.0.6
@@ -50,11 +52,13 @@ dependencies:
   '@sanity/types': 3.2.5
   '@sanity/ui': 1.1.0_23mhwjhnzfjwvdn7ol54k26zom
   '@sanity/vision': 3.2.5_23mhwjhnzfjwvdn7ol54k26zom
+  get-youtube-id: 1.0.1
   next: 13.1.5_biqbaboplfbrettd7655fr4n2y
   next-sanity: 4.1.1_xemstyn4com55sgtq25xetnsku
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-is: 18.2.0
+  react-lite-youtube-embed: 2.3.52_biqbaboplfbrettd7655fr4n2y
   rxjs: 7.8.0
   sanity: 3.2.6_z765n46jyysyfgk6yot2s5acla
   sanity-plugin-asset-source-unsplash: 1.0.6_hfs3wd77liajulqli2qbldk5tq
@@ -3470,6 +3474,10 @@ packages:
       - supports-color
     dev: false
 
+  /get-youtube-id/1.0.1:
+    resolution: {integrity: sha512-5yidLzoLXbtw82a/Wb7LrajkGn29BM6JuLWeHyNfzOGp1weGyW4+7eMz6cP23+etqj27VlOFtq8fFFDMLq/FXQ==}
+    dev: false
+
   /git-hooks-list/3.0.0:
     resolution: {integrity: sha512-XDfdemBGJIMAsHHOONHQxEH5dX2kCpE6MGZ1IsNvBuDPBZM3p4EAwAC7ygMjn/1/x+BJX0TK1ara1Zrh7JCFdQ==}
     dev: true
@@ -5172,6 +5180,16 @@ packages:
 
   /react-lifecycles-compat/3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+    dev: false
+
+  /react-lite-youtube-embed/2.3.52_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-G010PvCavA4EqL8mZ/Sv9XXiHnjMfONW+lmNeCRnSEPluPdptv2lZ0cNlngrj7K9j7luc8pbpyrmNpKbD9VMmw==}
+    peerDependencies:
+      react: '>=16.0.8'
+      react-dom: '>=16.0.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-photo-album/2.0.0_react@18.2.0:

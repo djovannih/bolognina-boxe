@@ -1,5 +1,6 @@
 import { PortableText } from '@portabletext/react'
 import { Image as SanityImage } from '@sanity/types'
+import YouTubeEmbed from 'components/Page/YouTubeEmbed'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { groq } from 'next-sanity'
@@ -16,6 +17,7 @@ const ptComponents = {
         className="!relative"
       />
     ),
+    youtube: ({ value }: any) => <YouTubeEmbed value={value} />,
   },
 }
 

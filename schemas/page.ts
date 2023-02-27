@@ -43,6 +43,9 @@ export default defineType({
             },
           ],
         },
+        {
+          type: 'youtube',
+        },  
       ],
     },
     gallery,
