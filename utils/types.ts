@@ -16,5 +16,7 @@ export type StaffMember = {
 
 export type HomepageData = {
   cards: Card[]
-  staff: StaffMember[]
+  redSchedule: Image
+  blueSchedule: Image
+  // staff: StaffMember[]
 }
