@@ -15,11 +15,10 @@ import {
 } from './lib/sanity.api'
 import { previewDocumentNode } from './plugins/previewPane'
 import { productionUrl } from './plugins/productionUrl'
-import { settingsPlugin, settingsStructure } from './plugins/settings'
 import cardType from './schemas/card'
 import homepageType from './schemas/homepage'
+import menuType from './schemas/menu'
 import pageType from './schemas/page'
-import settingsType from './schemas/settings'
 import staffType from './schemas/staff'
 
 const title = import.meta.env.SANITY_STUDIO_PROJECT_TITLE || 'Bolognina boxe'
@@ -31,21 +30,17 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [cardType, staffType, homepageType, pageType, settingsType],
+    types: [cardType, staffType, homepageType, pageType, menuType],
   },
   plugins: [
     deskTool({
-      structure: settingsStructure(settingsType),
-      // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
-    // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    settingsPlugin({ type: settingsType.name }),
     // Add the "Open preview" action
     productionUrl({
       apiVersion,
       previewSecretId,
-      types: [homepageType.name, settingsType.name, pageType.name],
+      types: [homepageType.name, menuType.name, pageType.name],
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
