@@ -48,5 +48,3 @@ export async function generateStaticParams() {
   )
   return paths.map((slug: string) => ({ slug }))
 }
-
-export const revalidate = 60
