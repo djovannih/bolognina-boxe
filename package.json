@@ -20,6 +20,7 @@
     "@next/env": "^13.1.5",
     "@next/font": "^13.1.5",
     "@portabletext/react": "^2.0.1",
+    "@react-google-maps/api": "^2.18.1",
     "@sanity/client": "^4.0.1",
     "@sanity/icons": "^2.2.2",
     "@sanity/image-url": "^1.0.2",

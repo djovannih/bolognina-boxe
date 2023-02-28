@@ -1,4 +1,5 @@
 import MainImage from 'components/Homepage/MainImage'
+import Map from 'components/Homepage/Map'
 import Schedule from 'components/Homepage/Schedule'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -69,6 +70,14 @@ export default async function Page() {
               <Schedule image={blueSchedule} />
               <Schedule image={redSchedule} />
             </div>
+          </div>
+        </section>
+        <section className="relative z-20 text-gray-500 bg-neutral-900">
+          <div className="container flex flex-wrap px-5 py-12 mx-auto">
+            <h2 className="mx-auto mb-8 text-3xl font-medium text-white sm:text-6xl">
+              Come raggiungerci
+            </h2>
+            <Map />
           </div>
         </section>
         {/* <StaffSection staff={staff} /> */}
